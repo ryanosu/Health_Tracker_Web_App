@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Health_Tracker_Web_App.Server", "Health_Tracker_Web_App.Server\Health_Tracker_Web_App.Server.csproj", "{A0BD702B-E891-4150-ADBF-E578B7693B32}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "health_tracker_web_app.client", "health_tracker_web_app.client\health_tracker_web_app.client.esproj", "{F3F5ED3F-85FD-4517-BD65-6345E0641641}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0BD702B-E891-4150-ADBF-E578B7693B32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0BD702B-E891-4150-ADBF-E578B7693B32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0BD702B-E891-4150-ADBF-E578B7693B32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0BD702B-E891-4150-ADBF-E578B7693B32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3F5ED3F-85FD-4517-BD65-6345E0641641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3F5ED3F-85FD-4517-BD65-6345E0641641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3F5ED3F-85FD-4517-BD65-6345E0641641}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F3F5ED3F-85FD-4517-BD65-6345E0641641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3F5ED3F-85FD-4517-BD65-6345E0641641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3F5ED3F-85FD-4517-BD65-6345E0641641}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A615181C-9BB7-4C15-8810-4A3663AFCDE1}
+	EndGlobalSection
+EndGlobal

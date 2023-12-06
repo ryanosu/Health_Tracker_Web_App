@@ -1,0 +1,6 @@
+@Health_Tracker_Web_App.Server_HostAddress = http://localhost:5018
+
+GET {{Health_Tracker_Web_App.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
