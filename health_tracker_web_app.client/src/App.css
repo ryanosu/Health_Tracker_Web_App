@@ -6,8 +6,6 @@
 }
  
 .App {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,9 +13,8 @@
 }
  
 .Tabs {
-  width: 80%;
+  width:100%;
   height: auto;
-  min-height: 400px;
   background: #053742;
   margin: 3.5rem auto 1.5rem;
   padding: 2rem 1rem;
@@ -102,4 +99,80 @@ margin-top: 8%;
   position: absolute;
 margin-left: 25%;
 margin-top: 5%;
+}
+
+.grid-container{
+  line-height: 2;
+  border: 1px solid #ddd;
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  top: 400px;
+  right: 400px;
+}
+
+.grid-cell{
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.add-food-component-container{
+  align-items: center;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: absolute;
+  right: 1200px;
+  top: 400px;
+  display: flex;
+  border: 1px solid #ddd;
+}
+
+.form-container{
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 200px;
+}
+
+.add-food-button{
+  margin: 20px;
+  padding: 10px;
+  width: 100px;
+  height: 50px;
+  color: white;
+}
+
+.call-api-component-form-container{
+  align-items: center;
+  margin: 0;
+  border: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: absolute;
+  right: 1500px;
+  top: 400px;
+  display: flex;
+  border: 1px solid #ddd;
+}
+
+.call-api-component-button{
+  margin: 20px;
+  padding: 10px;
+  width: 100px;
+  height: 50px;
+  color: white;
 }

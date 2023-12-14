@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TodaysDataTab from "../AllTabs/TodaysDataTab";
-import SecondTab from "../AllTabs/SecondTab";
 import LongTermDataTab from "../AllTabs/LongTermDataTab";
+import EnterDataTab from "../AllTabs/EnterDataTab";
 
 const Tabs = () => {
   const [selectedTab, setSelectedTab] = useState("TodaysDataTab");
@@ -9,7 +9,7 @@ const Tabs = () => {
     setSelectedTab("TodaysDataTab");
   };
   const handleTab2 = () => {
-    setSelectedTab("tab2");
+    setSelectedTab("EnterDataTab");
   };
   const handleTab3 = () => {
     setSelectedTab("LongTermDataTab");
@@ -21,13 +21,13 @@ const Tabs = () => {
       <ul className="nav">
         <li className={selectedTab === "TodaysDataTab" ? "selected" : ""} onClick={handleTab1}>Today`s Data</li>
         
-        <li className={selectedTab === "tab2" ? "selected" : ""} onClick={handleTab2}>Tab 2</li>
+        <li className={selectedTab === "EnterDataTab" ? "selected" : ""} onClick={handleTab2}>Enter Data</li>
 
         <li className={selectedTab === "LongTermDataTab" ? "selected" : ""} onClick={handleTab3}>Long-Term Data</li>
       </ul>
  
       <div className="outlet">
-        {selectedTab === "TodaysDataTab" ? <TodaysDataTab /> : selectedTab === "tab2" ? <SecondTab /> : <LongTermDataTab />}
+        {selectedTab === "TodaysDataTab" ? <TodaysDataTab /> : selectedTab === "EnterDataTab" ? <EnterDataTab /> : <LongTermDataTab />}
       </div>
 
     </div>
