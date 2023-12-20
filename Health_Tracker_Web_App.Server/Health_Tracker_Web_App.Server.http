@@ -1,6 +1,34 @@
-@Health_Tracker_Web_App.Server_HostAddress = http://localhost:5018
+@Health_Tracker_Web_App.Server_HostAddress = https://localhost:7264
 
-GET {{Health_Tracker_Web_App.Server_HostAddress}}/weatherforecast/
+GET {{Health_Tracker_Web_App.Server_HostAddress}}/api/food/3
 Accept: application/json
+
+###
+
+POST {{Health_Tracker_Web_App.Server_HostAddress}}/api/food
+Content-Type: application/json
+
+{
+  "food": {"Name":"SomeFood","Fat":10,"Carbs":20,"Protein":15,"Calories":300,"UsersId":1},
+  "name": "SomeFood",
+  "Users": {"username": "testname", "email": "test@gmail.com", "password": "test"}
+}
+
+###
+
+GET {{Health_Tracker_Web_App.Server_HostAddress}}/api/food
+
+###
+
+DELETE {{Health_Tracker_Web_App.Server_HostAddress}}/api/food/0
+
+###
+
+POST {{Health_Tracker_Web_App.Server_HostAddress}}/api/food
+Content-Type: application/json
+
+{
+  //Food
+}
 
 ###
