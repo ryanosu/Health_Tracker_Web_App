@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState } from "react"
 
-const AddFoodComponent = ({sendReload}) => {
-
+function EditFoodComponent({sendReloadEdit, editFoodId}) {
     const [food, setFood] = useState({
+        food_id: editFoodId,
         name: "",
         fat: "",
         protein: "",
@@ -21,8 +21,8 @@ const AddFoodComponent = ({sendReload}) => {
 
     const handleReload = () => {
         // Call the onReload function passed down from the parent
-        console.log("AddFoodComponent: Reload sequence #2")
-        sendReload();
+        console.log("EditFoodComponent: Reload sequence #2")
+        sendReloadEdit(0);
     };
 
     const handleButtonClick = async (e) => {
@@ -31,22 +31,22 @@ const AddFoodComponent = ({sendReload}) => {
         e.preventDefault()
         
         await fetch("https://healthtrackerwebappserver20231215171355.azurewebsites.net/api/food", {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(food)
         }).then(()=>{
-            console.log("AddFoodComponent: Reload sequence #1")
+            console.log("EditFoodComponent: Reload sequence #1")
             handleReload()
         }).catch(error => {
-            console.error('Error (POST Request):', error.message);
+            console.error('Error (PUT Request):', error.message);
         })        
     };
 
     return ( 
         <div className="add-food-component-container">
-        <div className="add-or-edit">Add Food</div>
+        <div className="add-or-edit">Edit Food</div>
             <form>
                 <table className="form-container">
                     <td>Name:</td><input type="text" name="name" onChange={handleChange} required></input>
@@ -62,4 +62,4 @@ const AddFoodComponent = ({sendReload}) => {
     )
 }
 
-export default AddFoodComponent;
+export default EditFoodComponent

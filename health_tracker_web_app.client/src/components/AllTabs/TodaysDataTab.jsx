@@ -2,7 +2,7 @@ import BarChart from "../BarChart";
 import PieChart from "../PieChart";
 import { UserData } from "../../Data";
 import { PieData } from "../../PieData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const TodaysDataTab = () => {
 
@@ -15,16 +15,70 @@ const TodaysDataTab = () => {
         borderColor: "blue",
         backgroundColor: 'rgba(75,192,192,0.5)',
     }]
-})
+  })
 
-const [userDataPie, setUserDataPie] = useState({
+  const [userDataPie, setUserDataPie] = useState({
     labels: PieData.map((data) => data.category),
     datasets: [{
         label: "Today's Statistics",
         data: PieData.map((data) => data.count),
         backgroundColor: ['red', 'pink', 'green']
     }]
-})
+  })
+
+  const getTodaysData = async () => {
+    try{
+      const response = await fetch('https://healthtrackerwebappserver20231215171355.azurewebsites.net/api/food')
+      const returnData = await response.json()
+        console.log("returnData: ", returnData)
+        let totalFat = 0
+        let totalCarbs = 0
+        let totalProtein = 0
+        let totalCalories = 0
+        let totalList = returnData.length
+        for(let i=0; i<totalList; i++){
+          totalFat += returnData[i].fat
+          totalCarbs += returnData[i].carbs
+          totalProtein += returnData[i].protein
+          totalCalories += returnData[i].calories
+        }
+        setUserData({
+          labels: ['fat', 'carbs', 'protein', 'calories'],
+          datasets: [{
+            label: "Today's Statistics",
+            data: [totalFat, totalCarbs, totalProtein, totalCalories],
+            borderWidth: 5,
+            borderColor: "blue",
+            backgroundColor: 'rgba(75,192,192,0.5)',
+          }]
+        })
+        setUserDataPie({
+          labels: ['fat', 'carbs', 'protein'],
+          datasets: [{
+            label: "Today's Statistics",
+            data: [totalFat, totalCarbs, totalProtein],
+            backgroundColor: ['red', 'pink', 'green']
+          }]
+        })
+    }
+    catch(error){
+      console.error('Error (Data.js: GET Request):', error.message)
+    }
+    // setUserData({
+    //   labels: ['fat', 'carbs', 'protein', 'calories'],
+    //   datasets: [{
+    //       label: "Today's Statistics",
+    //       data: [1, 4, 3, 5],
+    //       borderWidth: 5,
+    //       borderColor: "blue",
+    //       backgroundColor: 'rgba(75,192,192,0.5)',
+    //   }]
+    // })
+  }
+
+  useEffect(()=>{
+    getTodaysData()
+  },[])
 
   return (
     <>

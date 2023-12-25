@@ -1,3 +1,6 @@
+// GET request by default
+//export const UserData = await fetch('https://healthtrackerwebappserver20231215171355.azurewebsites.net/api/food').catch(error => console.error('Error (Data.js: GET Request):', error.message))
+
 export const UserData = [
     {
       id: 1,
@@ -19,4 +22,4 @@ export const UserData = [
       category: "Calories",
       count: 2300
     },
-  ];
+];

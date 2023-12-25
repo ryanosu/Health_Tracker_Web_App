@@ -1,47 +1,42 @@
 import { useEffect, useState } from "react";
 
-const GridComponent = () => {
+const GridComponent = ({parentState, handleChangeParentStateEdit, editFoodId}) => {
+  
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
     try {
       // GET request by default
       const response = await fetch('https://healthtrackerwebappserver20231215171355.azurewebsites.net/api/food');
-        
-      if (!response.ok) {
-        throw new Error('Network request failed');
-      }
-
       const result = await response.json();
       setData(result)
     }
-      
     catch (error) {
-      console.error('Error fetching data:', error.message);
+      console.error('Error (GET Request):', error.message);
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, []); // Empty dependency array === effect runs once after the initial render
+  }, [parentState, editFoodId]); // Empty dependency array === effect runs once after the initial render
 
   const handleDelete = async (food_id) => {
 
-    try {
-      const deleteResponse = await fetch(`https://healthtrackerwebappserver20231215171355.azurewebsites.net/api/food/${food_id}`, {
-        method: 'DELETE',
-      });
-
-      if (!deleteResponse.ok) {
-        throw new Error('Delete request failed');
-      }
-
-      // Trigger a re-fetch of data after successful deletion
+    await fetch(`https://healthtrackerwebappserver20231215171355.azurewebsites.net/api/food/${food_id}`, {
+      method: 'DELETE',
+    }).then(()=>{
+      // Trigger a re-fetch of data after deletion
       fetchData();
-    } catch (error) {
-      console.error('Error deleting data:', error.message);
-    }
-  };
+    }).catch(error => {
+      console.error('Error (DELETE Request):', error.message);
+    })
+  }
+
+  const handleEdit = async (food_id) => {
+    // going to need a way to handle edits
+    //console.log("Trigger handleEdit inside GridComponent")
+    handleChangeParentStateEdit(food_id)
+  }
 
   return (
     <div>
@@ -63,8 +58,8 @@ const GridComponent = () => {
               <td className="grid-cell">{val.carbs}</td>
               <td className="grid-cell">{val.protein}</td>
               <td className="grid-cell">{val.calories}</td>
-              <td className="grid-cell">Edit</td>
-              <td className="grid-cell"><button onClick={() => handleDelete(val.food_id)}>Delete</button></td>
+              <td className="grid-cell"><button type="submit" className="delete-and-edit-food-button" onClick={() => handleEdit(val.food_id)}>Edit</button></td>
+              <td className="grid-cell"><button type="submit" className="delete-and-edit-food-button" onClick={() => handleDelete(val.food_id)}>Delete</button></td>
             </tr>
           )
         })}

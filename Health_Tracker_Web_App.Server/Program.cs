@@ -26,7 +26,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-
+    app.UseCors("corspolicy");
 }
 
 //app.UseCors("corspolicy");

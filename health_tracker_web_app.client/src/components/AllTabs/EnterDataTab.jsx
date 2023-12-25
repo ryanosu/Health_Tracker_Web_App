@@ -1,22 +1,39 @@
 import AddFoodComponent from "../AddFoodComponent";
 import GridComponent from "../GridComponent";
 import CallApiComponent from "../CallApiComponent";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import EditFoodComponent from "../EditFoodComponent";
 
 const EnterDataTab = () => {
 
-  const [shouldRenderChildren, setShouldRenderChildren] = useState(true);
+  const [parentState, setParentState] = useState(0);
 
-  const handleReload = () => {
+  const handleChangeParentState = () => {
      // Toggle the state to trigger a re-render of the children
-     setShouldRenderChildren((prevShouldRender) => prevShouldRender);
+     setParentState((prev)=>{prev+1});
+     console.log("EnterDataTab: handleChangeParentState function triggered for Reload sequence #3. parentState: ", parentState)
   };
+
+  useEffect(() => {
+    console.log("EnterDataTab: useEffect parentState Re-render triggered. parentState: ", parentState);
+  },[parentState]);
+
+  const [editFoodId, setEditFoodId] = useState(0)
+
+  const handleChangeParentStateEdit = (food_id) => {
+    setEditFoodId(food_id)
+    console.log("EnterDataTab: handleChangeParentStateEdit function triggered. editFoodId: ", editFoodId)
+  }
+
+  useEffect(() => {
+    console.log("EnterDataTab: useEffect editFoodId Re-render triggered. editFoodId: ", editFoodId);
+  },[editFoodId]);
 
   return (
     <div className="EnterDataTab">
       <CallApiComponent />
-      <AddFoodComponent onReload={handleReload}/>
-      {shouldRenderChildren && <GridComponent />}
+      {editFoodId === 0 ? <AddFoodComponent sendReload={handleChangeParentState}/> : <EditFoodComponent sendReloadEdit={handleChangeParentStateEdit} editFoodId={editFoodId}/>}
+      <GridComponent parentState={parentState} handleChangeParentStateEdit={handleChangeParentStateEdit} editFoodId={editFoodId}/>
     </div>
   );
 };
