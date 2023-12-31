@@ -85,32 +85,33 @@ ul.nav li.selected {
 
 .barchart{
 position: absolute;
-margin-left: 10%;
-margin-top: 8%;
+left: 15%;
+top: 35%;
+margin: 1%;
 }
 
 .piechart{
   position: absolute;
-margin-left: 50%;
-margin-top: 8%;
+left: 53%;
+top: 35%;
+margin: 1%;
 }
 
 .linechart{
   position: absolute;
-margin-left: 25%;
-margin-top: 5%;
+left: 35%;
+top: 35%;
 }
 
 .grid-container{
   line-height: 2;
   border: 1px solid #ddd;
   position: absolute;
-  
   margin: 0;
   border: 0;
   padding: 0;
-  top: 400px;
-  right: 400px;
+  top: 30%;
+  right: 15%;
 }
 
 .grid-cell{
@@ -128,8 +129,8 @@ margin-top: 5%;
   padding: 0;
   box-sizing: border-box;
   position: absolute;
-  right: 1200px;
-  top: 400px;
+  left: 46%;
+  top: 30%;
   border: 1px solid #ddd;
   overflow: visible;
 }
@@ -161,8 +162,8 @@ margin-top: 5%;
   box-sizing: border-box;
   overflow:visible;
   position: absolute;
-  right: 1500px;
-  top: 400px;
+  left: 22%;
+  top: 30%;
   display: flex;
   border: 1px solid #ddd;
 }
@@ -204,7 +205,7 @@ margin-top: 5%;
   margin: 0px;
   position: absolute;
   top: 50px;
-  right: 50px;
+  right: 5%;
   border-color: white;
   border: 2px solid black;
 }
@@ -219,7 +220,7 @@ margin-top: 5%;
   margin: 0px;
   position: absolute;
   top: 50px;
-  right: 150px;
+  right: 5%;
   border-color: white;
   border: 2px solid black;
 }
@@ -232,7 +233,7 @@ margin-top: 5%;
   margin: 0px;
   position: absolute;
   top: 50px;
-  left: 150px;
+  left: 5%;
 }
 
 .gridComponent-title{
