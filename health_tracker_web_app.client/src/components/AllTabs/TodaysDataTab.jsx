@@ -4,7 +4,7 @@ import { UserData } from "../../Data";
 import { PieData } from "../../PieData";
 import { useEffect, useState } from "react";
 
-const TodaysDataTab = () => {
+const TodaysDataTab = ({receivedUserID}) => {
 
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.category),
@@ -26,11 +26,12 @@ const TodaysDataTab = () => {
     }]
   })
 
-  const getTodaysData = async () => {
+  const getTodaysData = async (receivedUserID) => {
     try{
-      const response = await fetch('https://healthtrackerwebappserver20231215171355.azurewebsites.net/api/food')
-      const returnData = await response.json()
-        console.log("returnData: ", returnData)
+      console.log("receivedUserID: ", receivedUserID)
+      const response = await fetch(`https://healthtrackerwebappserver20231215171355.azurewebsites.net/api/users/${receivedUserID}`);
+      const returnData = await response.json();
+        //console.log("returnData: ", returnData)
         let totalFat = 0
         let totalCarbs = 0
         let totalProtein = 0
@@ -62,7 +63,7 @@ const TodaysDataTab = () => {
         })
     }
     catch(error){
-      console.error('Error (Data.js: GET Request):', error.message)
+      console.error('Error (TodaysDataTab: GET Request):', error.message)
     }
     // setUserData({
     //   labels: ['fat', 'carbs', 'protein', 'calories'],
@@ -77,7 +78,7 @@ const TodaysDataTab = () => {
   }
 
   useEffect(()=>{
-    getTodaysData()
+    getTodaysData(receivedUserID)
   },[])
 
   return (

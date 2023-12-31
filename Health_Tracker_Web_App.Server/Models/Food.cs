@@ -9,13 +9,15 @@ public partial class Food
 
     public string Name { get; set; } = null!;
 
-    public int Fat { get; set; }
+    public double Fat { get; set; }
 
-    public int Carbs { get; set; }
+    public double Carbs { get; set; }
 
-    public int Protein { get; set; }
+    public double Protein { get; set; }
 
-    public int Calories { get; set; }
+    public double Calories { get; set; }
 
     public int Users_id { get; set; }
+
+    public string? Date { get; set; } = null!;
 }

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-const GridComponent = ({parentState, handleChangeParentStateEdit, editFoodId}) => {
+const GridComponent = ({parentState, handleChangeParentStateEdit, editFoodId, receivedUserID}) => {
   
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
     try {
       // GET request by default
-      const response = await fetch('https://healthtrackerwebappserver20231215171355.azurewebsites.net/api/food');
+      const response = await fetch(`https://healthtrackerwebappserver20231215171355.azurewebsites.net/api/users/${receivedUserID}`);
       const result = await response.json();
       setData(result)
     }
@@ -41,6 +41,7 @@ const GridComponent = ({parentState, handleChangeParentStateEdit, editFoodId}) =
   return (
     <div>
       <table className="grid-container">
+      <div className="gridComponent-title">Today`s Food</div>
         
         <tr>
           <th className="grid-cell">Name</th>

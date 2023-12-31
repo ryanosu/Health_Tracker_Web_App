@@ -7,10 +7,6 @@ public partial class User
 {
     public int Users_id { get; set; }
 
-    public string Username { get; set; } = null!;
-
-    public string Password { get; set; } = null!;
-
-    public string Email { get; set; } = null!;
+    public string Uuid { get; set; } = null!;
 
 }

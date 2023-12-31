@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddFoodComponent = ({sendReload}) => {
+const AddFoodComponent = ({sendReload, receivedUserID}) => {
 
     const [food, setFood] = useState({
         name: "",
@@ -8,13 +8,14 @@ const AddFoodComponent = ({sendReload}) => {
         protein: "",
         carbs: "",
         calories: "",
-        users_id: 1
+        users_id: receivedUserID
     })
 
     const handleChange = (e) => {
         const name = e.target.name
         const value = e.target.value
         setFood((prev) =>{
+            console.log("LOOK HERE: ", {...prev, [name]: value})
             return {...prev, [name]: value}
         })
     }
@@ -29,7 +30,7 @@ const AddFoodComponent = ({sendReload}) => {
 
         // stop site reload
         e.preventDefault()
-        
+        console.log("handleButtonClick: ", food)
         await fetch("https://healthtrackerwebappserver20231215171355.azurewebsites.net/api/food", {
             method: "POST",
             headers: {

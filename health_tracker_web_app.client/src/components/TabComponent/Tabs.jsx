@@ -3,7 +3,7 @@ import TodaysDataTab from "../AllTabs/TodaysDataTab";
 import LongTermDataTab from "../AllTabs/LongTermDataTab";
 import EnterDataTab from "../AllTabs/EnterDataTab";
 
-const Tabs = () => {
+const Tabs = ({receivedUserID}) => {
   const [selectedTab, setSelectedTab] = useState("TodaysDataTab");
   const handleTab1 = () => {
     setSelectedTab("TodaysDataTab");
@@ -27,7 +27,7 @@ const Tabs = () => {
       </ul>
  
       <div className="outlet">
-        {selectedTab === "TodaysDataTab" ? <TodaysDataTab /> : selectedTab === "EnterDataTab" ? <EnterDataTab /> : <LongTermDataTab />}
+        {selectedTab === "TodaysDataTab" ? <TodaysDataTab receivedUserID={receivedUserID}/> : selectedTab === "EnterDataTab" ? <EnterDataTab receivedUserID={receivedUserID}/> : <LongTermDataTab receivedUserID={receivedUserID}/>}
       </div>
 
     </div>

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function EditFoodComponent({sendReloadEdit, editFoodId}) {
+function EditFoodComponent({sendReloadEdit, editFoodId, receivedUserID}) {
     const [food, setFood] = useState({
         food_id: editFoodId,
         name: "",
@@ -8,7 +8,7 @@ function EditFoodComponent({sendReloadEdit, editFoodId}) {
         protein: "",
         carbs: "",
         calories: "",
-        users_id: 1
+        users_id: receivedUserID
     })
 
     const handleChange = (e) => {
